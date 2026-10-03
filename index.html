@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>鐵原健身 IRONFIELD｜臺中西區・新手友善的肌力訓練館</title>
+  <meta name="description" content="鐵原健身位於臺中市西區，專注新手與上班族的肌力訓練。首次體驗免費、不強迫推銷、退費規則公開透明。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================================================
+       設計變數：深炭黑 + 螢光萊姆綠，強調力量感與高對比
+       ========================================================= */
+    :root {
+      --ink: #111214;          /* 主深色背景 */
+      --ink-2: #1b1d21;        /* 卡片深色 */
+      --ink-3: #2a2d33;        /* 邊框、分隔 */
+      --paper: #f5f5f2;        /* 淺色區塊背景 */
+      --white: #ffffff;
+      --text: #1a1b1e;
+      --muted: #5f636b;
+      --muted-dark: #a3a8b1;   /* 深色背景上的次要文字 */
+      --accent: #c8f031;       /* 萊姆綠：主要行動 */
+      --accent-press: #a9cf1a;
+      --danger: #e5484d;
+      --success: #2fa36b;
+      --warn: #f2a33a;
+
+      --font: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      --font-en: "Oswald", "Noto Sans TC", sans-serif;
+
+      --radius: 14px;
+      --radius-sm: 8px;
+      --max: 1120px;
+      --header-h: 64px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 8px); }
+    body {
+      margin: 0;
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--text);
+      background: var(--paper);
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4 { margin: 0; line-height: 1.3; font-weight: 900; }
+    p { margin: 0; }
+    a { color: inherit; }
+    ul, ol { margin: 0; padding: 0; }
+
+    .container { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+    .section { padding: 96px 0; }
+    .section--dark { background: var(--ink); color: var(--white); }
+    .section--white { background: var(--white); }
+
+    .eyebrow {
+      font-family: var(--font-en);
+      font-size: 14px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 8px;
+    }
+    .section--dark .eyebrow { color: var(--accent); }
+    .section-head { margin-bottom: 48px; max-width: 720px; }
+    .section-title { font-size: clamp(28px, 4.5vw, 40px); }
+    .section-lead { margin-top: 12px; color: var(--muted); }
+    .section--dark .section-lead { color: var(--muted-dark); }
+
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+    }
+    .skip-link {
+      position: absolute; left: -999px; top: 8px; z-index: 200;
+      background: var(--accent); color: var(--ink); padding: 8px 16px; font-weight: 700;
+    }
+    .skip-link:focus { left: 8px; }
+
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+    /* =========================================================
+       按鈕：預設 / hover / active / focus / disabled / loading
+       ========================================================= */
+    .btn {
+      --btn-bg: var(--accent);
+      --btn-fg: var(--ink);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 52px;
+      padding: 0 28px;
+      border: 2px solid var(--btn-bg);
+      border-radius: 999px;
+      background: var(--btn-bg);
+      color: var(--btn-fg);
+      font: 700 16px/1 var(--font);
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform .15s, background-color .2s, border-color .2s, color .2s, box-shadow .2s;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(200, 240, 49, .35); }
+    .btn:active { transform: translateY(0); background: var(--accent-press); border-color: var(--accent-press); box-shadow: none; }
+    .btn:focus-visible { outline: 3px solid var(--white); outline-offset: 3px; box-shadow: 0 0 0 6px var(--ink); }
+    .btn[disabled], .btn[aria-disabled="true"] {
+      opacity: .45; cursor: not-allowed; transform: none; box-shadow: none;
+    }
+    .btn--ghost { --btn-bg: transparent; --btn-fg: var(--white); border-color: rgba(255,255,255,.4); }
+    .btn--ghost:hover { border-color: var(--white); background: rgba(255,255,255,.08); box-shadow: none; }
+    .btn--ghost:active { background: rgba(255,255,255,.16); border-color: var(--white); }
+    .btn--dark { --btn-bg: var(--ink); --btn-fg: var(--white); }
+    .btn--dark:hover { box-shadow: 0 8px 24px rgba(17,18,20,.25); }
+    .btn--dark:active { background: #000; border-color: #000; }
+    .btn--block { width: 100%; }
+    .btn .spinner {
+      display: none; width: 18px; height: 18px; border-radius: 50%;
+      border: 2px solid currentColor; border-right-color: transparent;
+      animation: spin .7s linear infinite;
+    }
+    .btn[aria-busy="true"] .spinner { display: inline-block; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* =========================================================
+       Header
+       ========================================================= */
+    .site-header {
+      position: sticky; top: 0; z-index: 100;
+      height: var(--header-h);
+      background: rgba(17, 18, 20, .92);
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--ink-3);
+      color: var(--white);
+    }
+    .site-header .container { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 900; font-size: 18px; white-space: nowrap; }
+    .logo-mark {
+      width: 34px; height: 34px; border-radius: 8px;
+      background: var(--accent); color: var(--ink);
+      display: grid; place-items: center;
+      font-family: var(--font-en); font-weight: 700; font-size: 18px;
+    }
+    .logo small { font-family: var(--font-en); font-weight: 500; letter-spacing: .15em; color: var(--muted-dark); font-size: 12px; }
+    .site-nav ul { list-style: none; display: flex; gap: 4px; }
+    .site-nav a {
+      display: block; padding: 8px 12px; border-radius: 999px;
+      text-decoration: none; font-size: 15px; color: var(--muted-dark);
+      transition: color .2s, background-color .2s;
+    }
+    .site-nav a:hover { color: var(--white); background: var(--ink-3); }
+    .header-cta { min-height: 40px; padding: 0 18px; font-size: 14px; }
+
+    /* =========================================================
+       1. Hero
+       ========================================================= */
+    .hero {
+      position: relative;
+      background: var(--ink);
+      color: var(--white);
+      overflow: hidden;
+      padding: 96px 0 80px;
+    }
+    .hero::before {
+      /* 斜向條紋：象徵槓片與動能 */
+      content: ""; position: absolute; inset: 0;
+      background:
+        repeating-linear-gradient(-55deg, transparent 0 46px, rgba(200, 240, 49, .06) 46px 48px),
+        radial-gradient(circle at 85% 25%, rgba(200, 240, 49, .22), transparent 45%);
+      pointer-events: none;
+    }
+    .hero .container { position: relative; display: grid; grid-template-columns: 1.3fr 1fr; gap: 56px; align-items: center; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+    .chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 4px 12px; border-radius: 999px;
+      font-size: 13px; font-weight: 500;
+      border: 1px solid var(--ink-3); background: var(--ink-2); color: var(--muted-dark);
+    }
+    .chip--accent { background: var(--accent); color: var(--ink); border-color: var(--accent); }
+    .hero-title { font-size: clamp(38px, 7vw, 68px); letter-spacing: .02em; }
+    .hero-title .en { display: block; font-family: var(--font-en); font-weight: 700; font-size: .5em; letter-spacing: .3em; color: var(--accent); margin-bottom: 4px; }
+    .hero-position { margin-top: 16px; font-size: clamp(18px, 2.4vw, 22px); font-weight: 700; }
+    .hero-claim { margin-top: 12px; color: var(--muted-dark); max-width: 34em; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+    .hero-promise { margin-top: 16px; font-size: 14px; color: var(--muted-dark); }
+    .hero-promise strong { color: var(--accent); }
+
+    .hero-panel {
+      background: var(--ink-2); border: 1px solid var(--ink-3);
+      border-radius: var(--radius); padding: 28px;
+    }
+    .hero-panel h2 { font-size: 16px; color: var(--muted-dark); font-weight: 500; margin-bottom: 16px; }
+    .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .stat { padding: 16px; border-radius: var(--radius-sm); background: var(--ink); }
+    .stat b { display: block; font-family: var(--font-en); font-size: 32px; line-height: 1.1; color: var(--accent); }
+    .stat span { font-size: 13px; color: var(--muted-dark); }
+    .hours-mini { margin-top: 20px; border-top: 1px solid var(--ink-3); padding-top: 16px; font-size: 14px; }
+    .hours-mini dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; margin: 0; }
+    .hours-mini dt { color: var(--muted-dark); }
+    .hours-mini dd { margin: 0; }
+
+    /* =========================================================
+       2. 教練團隊 + 學員見證
+       ========================================================= */
+    .coach-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .coach-card {
+      background: var(--white); border-radius: var(--radius);
+      border: 1px solid #e4e5e1; overflow: hidden;
+      display: flex; flex-direction: column;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .coach-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(17,18,20,.1); }
+    .coach-photo {
+      aspect-ratio: 4 / 3; background: var(--ink);
+      display: grid; place-items: center; position: relative;
+      color: var(--accent); font-size: 56px; font-weight: 900;
+    }
+    .coach-photo::after {
+      content: "照片示意"; position: absolute; right: 10px; bottom: 8px;
+      font-size: 11px; color: var(--muted-dark); font-weight: 400;
+    }
+    .coach-body { padding: 24px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+    .coach-name { font-size: 22px; }
+    .coach-name small { display: block; font-size: 13px; font-weight: 500; color: var(--muted); margin-top: 2px; }
+    .field-label { font-size: 12px; letter-spacing: .1em; color: var(--muted); font-weight: 700; margin-bottom: 4px; }
+    .tag-list { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag { padding: 3px 10px; border-radius: 6px; background: var(--paper); font-size: 13px; }
+    .tag--cert { background: var(--ink); color: var(--white); }
+    .coach-fit { margin-top: auto; padding: 12px 14px; border-left: 3px solid var(--accent); background: #f8fbe9; font-size: 14px; }
+
+    .trust-wrap { margin-top: 72px; }
+    .trust-wrap h3 { font-size: 24px; margin-bottom: 24px; }
+    .trust-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .trust-card {
+      margin: 0; background: var(--white); border-radius: var(--radius);
+      padding: 24px; border: 1px solid #e4e5e1;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .trust-card blockquote { margin: 0; font-size: 15px; }
+    .trust-card blockquote::before { content: "“"; display: block; font-family: var(--font-en); font-size: 48px; line-height: .6; color: var(--accent-press); }
+    .trust-card figcaption { display: flex; align-items: center; gap: 12px; margin-top: auto; font-size: 14px; }
+    .avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--ink); color: var(--accent); display: grid; place-items: center; font-weight: 900; flex: none; }
+    .trust-source { display: block; font-size: 12px; color: var(--muted); }
+
+    /* =========================================================
+       3. 課程方案
+       ========================================================= */
+    .plan-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .plan-card {
+      position: relative; background: var(--ink-2); border: 1px solid var(--ink-3);
+      border-radius: var(--radius); padding: 28px 24px;
+      display: flex; flex-direction: column; gap: 16px;
+      transition: border-color .2s, transform .2s;
+    }
+    .plan-card:hover { border-color: var(--muted-dark); transform: translateY(-4px); }
+    .plan-card--featured { border-color: var(--accent); }
+    .plan-badge { position: absolute; top: -12px; left: 24px; }
+    .plan-type { font-size: 13px; color: var(--muted-dark); }
+    .plan-name { font-size: 22px; }
+    .plan-price { font-family: var(--font-en); font-size: 38px; font-weight: 700; color: var(--accent); line-height: 1; }
+    .plan-price small { font-family: var(--font); font-size: 14px; color: var(--muted-dark); font-weight: 400; margin-left: 4px; }
+    .plan-dl { margin: 0; display: grid; gap: 12px; font-size: 14px; }
+    .plan-dl dt { color: var(--muted-dark); font-size: 12px; letter-spacing: .1em; }
+    .plan-dl dd { margin: 2px 0 0; }
+    .plan-card .btn { margin-top: auto; }
+
+    .fee-bar {
+      margin-top: 28px; display: flex; flex-wrap: wrap; gap: 16px 32px; align-items: center;
+      padding: 20px 24px; border-radius: var(--radius); border: 1px dashed var(--ink-3);
+      font-size: 15px;
+    }
+    .fee-bar strong { color: var(--accent); font-family: var(--font-en); font-size: 22px; margin: 0 4px; }
+    .fee-bar p { color: var(--muted-dark); }
+
+    /* =========================================================
+       4. 體驗流程 + 預約表單
+       ========================================================= */
+    .trial-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 56px; align-items: start; }
+    .steps { list-style: none; counter-reset: step; display: grid; gap: 4px; }
+    .step { position: relative; padding: 0 0 28px 64px; counter-increment: step; }
+    .step::before {
+      content: counter(step, decimal-leading-zero);
+      position: absolute; left: 0; top: 0;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--ink); color: var(--accent);
+      display: grid; place-items: center;
+      font-family: var(--font-en); font-weight: 700;
+    }
+    .step::after { content: ""; position: absolute; left: 21px; top: 48px; bottom: 4px; width: 2px; background: #dcddd8; }
+    .step:last-child::after { display: none; }
+    .step h3 { font-size: 19px; }
+    .step p { color: var(--muted); font-size: 15px; margin-top: 4px; }
+    .step--promise::before { background: var(--accent); color: var(--ink); }
+    .promise-box {
+      margin-top: 10px; padding: 14px 16px; border-radius: var(--radius-sm);
+      background: var(--ink); color: var(--white); font-size: 14px;
+    }
+    .promise-box ul { list-style: none; display: grid; gap: 6px; }
+    .promise-box li::before { content: "✓"; color: var(--accent); font-weight: 900; margin-right: 8px; }
+
+    /* 表單 */
+    .booking {
+      background: var(--white); border-radius: var(--radius);
+      border: 1px solid #e4e5e1; padding: 32px;
+      box-shadow: 0 20px 50px rgba(17,18,20,.06);
+    }
+    .booking h3 { font-size: 22px; }
+    .booking > p { color: var(--muted); font-size: 14px; margin: 6px 0 24px; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .form-field { display: flex; flex-direction: column; gap: 6px; }
+    .form-field--full { grid-column: 1 / -1; }
+    .form-field label, .form-field legend { font-size: 14px; font-weight: 700; }
+    .req { color: var(--danger); margin-left: 2px; }
+    .hint { font-size: 12px; color: var(--muted); }
+
+    .input, .select, .textarea {
+      width: 100%; min-height: 50px; padding: 12px 14px;
+      font: 400 16px/1.4 var(--font); color: var(--text);
+      background: var(--paper);
+      border: 2px solid #dcddd8; border-radius: var(--radius-sm);
+      transition: border-color .15s, background-color .15s, box-shadow .15s;
+      appearance: none; -webkit-appearance: none;
+    }
+    .select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%231a1b1e' stroke-width='2'%3E%3Cpath d='m1 1 5 5 5-5'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px;
+    }
+    .textarea { min-height: 96px; resize: vertical; }
+    /* hover */
+    .input:hover, .select:hover, .textarea:hover { border-color: #b9bbb4; background: var(--white); }
+    /* focus */
+    .input:focus, .select:focus, .textarea:focus {
+      outline: none; background: var(--white);
+      border-color: var(--ink); box-shadow: 0 0 0 4px rgba(200, 240, 49, .55);
+    }
+    /* 錯誤（送出後或使用者互動後才顯示） */
+    .form-field.is-invalid .input,
+    .form-field.is-invalid .select,
+    .form-field.is-invalid .textarea { border-color: var(--danger); background: #fff5f5; }
+    .form-field.is-invalid .input:focus,
+    .form-field.is-invalid .select:focus { box-shadow: 0 0 0 4px rgba(229, 72, 77, .2); }
+    /* 有效 */
+    .form-field.is-valid .input,
+    .form-field.is-valid .select { border-color: var(--success); }
+    .error-msg { display: none; font-size: 13px; color: var(--danger); font-weight: 500; }
+    .form-field.is-invalid .error-msg { display: block; }
+    /* disabled */
+    .input:disabled, .select:disabled, .textarea:disabled { opacity: .5; cursor: not-allowed; }
+
+    /* is_first 單選：大面積可點選卡片 */
+    fieldset.form-field { border: 0; padding: 0; margin: 0; }
+    .choice-group { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .choice { position: relative; }
+    .choice input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
+    .choice span {
+      display: flex; align-items: center; gap: 10px; min-height: 50px; padding: 10px 14px;
+      border: 2px solid #dcddd8; border-radius: var(--radius-sm); background: var(--paper);
+      font-size: 15px; transition: border-color .15s, background-color .15s;
+    }
+    .choice span::before {
+      content: ""; width: 18px; height: 18px; border-radius: 50%; flex: none;
+      border: 2px solid #b9bbb4; background: var(--white); transition: border .15s;
+    }
+    .choice input:hover + span { border-color: #b9bbb4; background: var(--white); }
+    .choice input:focus-visible + span { border-color: var(--ink); box-shadow: 0 0 0 4px rgba(200, 240, 49, .55); }
+    .choice input:checked + span { border-color: var(--ink); background: #f8fbe9; font-weight: 700; }
+    .choice input:checked + span::before { border: 6px solid var(--ink); }
+
+    .consent { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: var(--muted); }
+    .consent input { width: 20px; height: 20px; margin-top: 3px; accent-color: var(--ink); flex: none; }
+
+    .form-status {
+      margin-top: 18px; padding: 16px; border-radius: var(--radius-sm);
+      font-size: 14px; display: none;
+    }
+    .form-status.is-error { display: block; background: #fff5f5; color: var(--danger); border: 1px solid #f6c6c7; }
+    .form-status.is-success { display: block; background: #effaf3; color: #1d6b45; border: 1px solid #bfe6cf; }
+    .form-status pre {
+      margin: 10px 0 0; padding: 12px; border-radius: 6px; overflow-x: auto;
+      background: var(--ink); color: var(--accent); font-size: 12px; line-height: 1.6;
+    }
+
+    /* =========================================================
+       5. 空間設備
+       ========================================================= */
+    .facility-layout { display: grid; grid-template-columns: 1.4fr 1fr; gap: 32px; align-items: start; }
+    .facility-grid { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .facility {
+      padding: 20px; border-radius: var(--radius); background: var(--white);
+      border: 1px solid #e4e5e1; display: flex; flex-direction: column; gap: 6px;
+    }
+    .facility-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+    .facility h3 { font-size: 17px; }
+    .facility p { font-size: 14px; color: var(--muted); }
+    .status { font-size: 12px; font-weight: 700; padding: 2px 10px; border-radius: 999px; white-space: nowrap; }
+    .status--yes { background: #e6f6ec; color: #1d6b45; }
+    .status--no { background: #f0f0ee; color: var(--muted); }
+    .facility--no { opacity: .7; }
+    .facility--female { border: 2px solid var(--ink); }
+
+    .peak-card { background: var(--ink); color: var(--white); border-radius: var(--radius); padding: 28px; }
+    .peak-card h3 { font-size: 20px; }
+    .peak-card > p { color: var(--muted-dark); font-size: 14px; margin-top: 6px; }
+    .peak-chart { display: flex; align-items: flex-end; gap: 6px; height: 160px; margin-top: 24px; padding-bottom: 24px; position: relative; }
+    .peak-bar { flex: 1; position: relative; background: var(--ink-3); border-radius: 4px 4px 0 0; min-height: 4px; }
+    .peak-bar.is-peak { background: var(--warn); }
+    .peak-bar.is-calm { background: var(--accent); }
+    .peak-bar span { position: absolute; bottom: -22px; left: 50%; transform: translateX(-50%); font-size: 11px; color: var(--muted-dark); font-family: var(--font-en); }
+    .legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 13px; color: var(--muted-dark); margin-top: 8px; }
+    .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: middle; }
+    .peak-tip { margin-top: 18px; padding: 12px 14px; border-radius: var(--radius-sm); background: var(--ink-2); font-size: 14px; }
+    .peak-tip strong { color: var(--accent); }
+
+    /* =========================================================
+       6. 退費與合約
+       ========================================================= */
+    .refund-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 32px; align-items: start; }
+    .accordion { display: grid; gap: 12px; }
+    .acc {
+      background: var(--white); border: 1px solid #e4e5e1; border-radius: var(--radius);
+      transition: border-color .2s;
+    }
+    .acc[open] { border-color: var(--ink); }
+    .acc summary {
+      list-style: none; cursor: pointer; padding: 20px 24px;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+      font-weight: 700; font-size: 17px; border-radius: var(--radius);
+      transition: background-color .15s;
+    }
+    .acc summary::-webkit-details-marker { display: none; }
+    .acc summary:hover { background: var(--paper); }
+    .acc summary::after { content: "+"; font-family: var(--font-en); font-size: 26px; line-height: 1; transition: transform .2s; }
+    .acc[open] summary::after { transform: rotate(45deg); }
+    .acc-body { padding: 0 24px 24px; font-size: 15px; }
+    .acc-body ul { padding-left: 1.2em; display: grid; gap: 8px; }
+    .acc-body li::marker { color: var(--accent-press); }
+    .example {
+      margin-top: 14px; padding: 14px 16px; border-radius: var(--radius-sm);
+      background: var(--paper); font-size: 14px;
+    }
+    .example b { display: block; margin-bottom: 4px; }
+
+    .service-card { background: var(--ink); color: var(--white); border-radius: var(--radius); padding: 28px; }
+    .service-card h3 { font-size: 20px; margin-bottom: 16px; }
+    .service-list { list-style: none; display: grid; gap: 4px; margin-bottom: 20px; }
+    .service-list li { display: grid; grid-template-columns: 5em 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--ink-3); font-size: 15px; }
+    .service-list li:last-child { border-bottom: 0; }
+    .service-list span:first-child { color: var(--muted-dark); }
+    .service-list a { color: var(--accent); text-underline-offset: 4px; }
+    .service-list a:hover { color: var(--white); }
+    .service-note { font-size: 13px; color: var(--muted-dark); margin-top: 14px; }
+
+    /* =========================================================
+       Footer + 手機底部 CTA
+       ========================================================= */
+    .site-footer { background: #0a0b0c; color: var(--muted-dark); padding: 40px 0; font-size: 14px; }
+    .site-footer .container { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+    .site-footer a { color: var(--muted-dark); }
+    .site-footer a:hover { color: var(--white); }
+
+    .mobile-cta { display: none; }
+
+    /* =========================================================
+       RWD：平板
+       ========================================================= */
+    @media (max-width: 960px) {
+      .site-nav { display: none; }
+      .hero .container, .trial-grid, .facility-layout, .refund-grid { grid-template-columns: 1fr; }
+      .plan-grid { grid-template-columns: repeat(2, 1fr); }
+      .coach-grid, .trust-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* =========================================================
+       RWD：手機（≤ 640px）一律單欄
+       ========================================================= */
+    @media (max-width: 640px) {
+      .container { padding: 0 16px; }
+      .section { padding: 64px 0; }
+      .section-head { margin-bottom: 32px; }
+      .header-cta { display: none; }
+
+      .hero { padding: 56px 0 48px; }
+      .hero-actions .btn { flex: 1 1 100%; }
+      .hero-panel { padding: 20px; }
+
+      .coach-grid,
+      .trust-grid,
+      .plan-grid,
+      .form-grid,
+      .facility-grid,
+      .choice-group { grid-template-columns: 1fr; }
+
+      .coach-photo { aspect-ratio: 16 / 9; }
+      .trust-wrap { margin-top: 48px; }
+      .fee-bar { flex-direction: column; align-items: flex-start; }
+
+      .booking { padding: 24px 18px; }
+      .step { padding-left: 56px; }
+
+      .acc summary { padding: 18px; font-size: 16px; }
+      .acc-body { padding: 0 18px 20px; }
+      .service-card, .peak-card { padding: 22px; }
+
+      /* 手機底部固定預約按鈕：在任何區塊都能一鍵預約 */
+      .mobile-cta {
+        display: flex; gap: 10px;
+        position: fixed; left: 0; right: 0; bottom: 0; z-index: 90;
+        padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+        background: rgba(17, 18, 20, .96); border-top: 1px solid var(--ink-3);
+        transition: transform .25s;
+      }
+      .mobile-cta .btn { flex: 1; min-height: 48px; padding: 0 12px; font-size: 15px; }
+      .mobile-cta.is-hidden { transform: translateY(110%); }
+      body { padding-bottom: 76px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">跳至主要內容</a>
+
+  <!-- ===================== Header ===================== -->
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="#top">
+        <span class="logo-mark" aria-hidden="true">IF</span>
+        <span><span data-bind="gym.name">鐵原健身</span> <small>IRONFIELD</small></span>
+      </a>
+      <nav class="site-nav" aria-label="主要導覽">
+        <ul>
+          <li><a href="#coaches">教練</a></li>
+          <li><a href="#plans">方案</a></li>
+          <li><a href="#trial">體驗流程</a></li>
+          <li><a href="#facilities">空間</a></li>
+          <li><a href="#refund">退費規則</a></li>
+        </ul>
+      </nav>
+      <a class="btn header-cta" href="#booking">預約免費體驗</a>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ===================== 1. Hero ===================== -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="container">
+        <div>
+          <div class="hero-meta">
+            <span class="chip chip--accent">首次體驗免費</span>
+            <span class="chip">📍 <span data-bind="gym.region"></span></span>
+          </div>
+          <h1 class="hero-title" id="hero-title">
+            <span class="en">IRONFIELD GYM</span>
+            <span data-bind="gym.name"></span>
+          </h1>
+          <p class="hero-position" data-bind="gym.positioning"></p>
+          <p class="hero-claim" data-bind="gym.claim"></p>
+          <div class="hero-actions">
+            <a class="btn" href="#booking">預約首次體驗 →</a>
+            <a class="btn btn--ghost" href="#plans">先看課程方案</a>
+          </div>
+          <p class="hero-promise">體驗當天<strong>不推銷、不簽約</strong>，退費規則全部公開在<a href="#refund">這裡</a>。</p>
+        </div>
+
+        <aside class="hero-panel" aria-labelledby="quick-title">
+          <h2 id="quick-title">30 秒認識我們</h2>
+          <div class="stat-grid">
+            <div class="stat"><b>3</b><span>位持證教練</span></div>
+            <div class="stat"><b>0</b><span>元首次體驗</span></div>
+            <div class="stat"><b>7</b><span>天猶豫期全額退</span></div>
+            <div class="stat"><b>24</b><span>小時內客服回覆</span></div>
+          </div>
+          <div class="hours-mini">
+            <dl id="hours-list"></dl>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ===================== 2. 教練團隊 ===================== -->
+    <section class="section" id="coaches" aria-labelledby="coaches-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Coaches</span>
+          <h2 class="section-title" id="coaches-title">教練團隊</h2>
+          <p class="section-lead">每位教練的證照都可在櫃檯查閱正本。先看看誰最適合你，預約時可指定教練。</p>
+        </div>
+        <div class="coach-grid" id="coach-list"></div>
+
+        <div class="trust-wrap">
+          <h3>學員怎麼說</h3>
+          <div class="trust-grid" id="trust-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 3. 課程方案 ===================== -->
+    <section class="section section--dark" id="plans" aria-labelledby="plans-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Plans</span>
+          <h2 class="section-title" id="plans-title">課程方案</h2>
+          <p class="section-lead">價格含稅、無隱藏費用。每個方案都列出限制與退費規則，簽約前就能看清楚。</p>
+        </div>
+        <div class="plan-grid" id="plan-list"></div>
+        <div class="fee-bar" id="fee-bar"></div>
+      </div>
+    </section>
+
+    <!-- ===================== 4. 體驗流程 ===================== -->
+    <section class="section" id="trial" aria-labelledby="trial-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">First Visit</span>
+          <h2 class="section-title" id="trial-title">首次體驗流程</h2>
+          <p class="section-lead">全程約 60 分鐘，只要帶運動服和室內運動鞋。</p>
+        </div>
+
+        <div class="trial-grid">
+          <ol class="steps">
+            <li class="step">
+              <h3>線上預約</h3>
+              <p>填寫右側表單，選擇時段與目標。我們會在 24 小時內以你留下的方式確認。</p>
+            </li>
+            <li class="step">
+              <h3>抵達場館</h3>
+              <p>提早 10 分鐘到櫃檯報到，填寫簡易健康問卷（PAR-Q），領取毛巾與置物櫃鑰匙。</p>
+            </li>
+            <li class="step">
+              <h3>器材介紹與體驗</h3>
+              <p>教練帶你認識場館動線與 5 種基礎器材，並依你的目標做 30 分鐘入門訓練。</p>
+            </li>
+            <li class="step step--promise">
+              <h3>不強迫推銷承諾</h3>
+              <p>體驗結束後，你可以直接離開，不需要任何理由。</p>
+              <div class="promise-box">
+                <ul>
+                  <li>不會當天要求簽約或付款</li>
+                  <li>不會在體驗後連續電話推銷</li>
+                  <li>方案說明只在你主動詢問時提供</li>
+                  <li>若有不舒服的經驗，可直接向客服申訴</li>
+                </ul>
+              </div>
+            </li>
+          </ol>
+
+          <!-- TrialBooking 表單：name 屬性與資料結構一一對應 -->
+          <form class="booking" id="booking" novalidate aria-labelledby="booking-title">
+            <h3 id="booking-title">預約首次體驗</h3>
+            <p>標示 <span class="req">*</span> 為必填。資料僅用於聯繫本次預約。</p>
+
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="f-name">姓名<span class="req">*</span></label>
+                <input class="input" id="f-name" name="name" type="text" autocomplete="name" required minlength="2" placeholder="例：王小明" aria-describedby="err-name">
+                <span class="error-msg" id="err-name">請輸入至少 2 個字的姓名</span>
+              </div>
+
+              <div class="form-field">
+                <label for="f-contact">聯絡方式<span class="req">*</span></label>
+                <input class="input" id="f-contact" name="contact" type="text" autocomplete="tel" required placeholder="手機或 Email" aria-describedby="hint-contact err-contact">
+                <span class="hint" id="hint-contact">手機請填 09 開頭 10 碼</span>
+                <span class="error-msg" id="err-contact">請填寫有效的手機號碼或 Email</span>
+              </div>
+
+              <div class="form-field form-field--full">
+                <label for="f-slot">體驗時段<span class="req">*</span></label>
+                <select class="select" id="f-slot" name="slot" required aria-describedby="err-slot">
+                  <option value="">請選擇時段</option>
+                </select>
+                <span class="error-msg" id="err-slot">請選擇一個時段</span>
+              </div>
+
+              <div class="form-field form-field--full">
+                <label for="f-goal">訓練目標<span class="req">*</span></label>
+                <select class="select" id="f-goal" name="goal" required aria-describedby="err-goal">
+                  <option value="">請選擇最想達成的目標</option>
+                  <option value="減脂">減脂、體態雕塑</option>
+                  <option value="增肌">增肌、提升力量</option>
+                  <option value="改善痠痛">改善久坐痠痛、姿勢</option>
+                  <option value="產後恢復">產後恢復</option>
+                  <option value="體能維持">中高齡體能維持</option>
+                  <option value="其他">其他／還不確定</option>
+                </select>
+                <span class="error-msg" id="err-goal">請選擇訓練目標</span>
+              </div>
+
+              <fieldset class="form-field form-field--full" aria-describedby="err-first">
+                <legend>是否為首次來館？<span class="req">*</span></legend>
+                <div class="choice-group">
+                  <label class="choice">
+                    <input type="radio" name="is_first" value="true" required>
+                    <span>是，第一次來</span>
+                  </label>
+                  <label class="choice">
+                    <input type="radio" name="is_first" value="false">
+                    <span>否，曾經來過</span>
+                  </label>
+                </div>
+                <span class="error-msg" id="err-first">請選擇是否為首次來館</span>
+              </fieldset>
+
+              <div class="form-field form-field--full">
+                <label class="consent">
+                  <input type="checkbox" id="f-consent" required>
+                  <span>我已閱讀<a href="#refund">退費與合約說明</a>，並同意場館以上述聯絡方式確認預約。</span>
+                </label>
+                <span class="error-msg" id="err-consent">請勾選同意後再送出</span>
+              </div>
+            </div>
+
+            <button class="btn btn--dark btn--block" type="submit" style="margin-top: 24px;">
+              <span class="spinner" aria-hidden="true"></span>
+              <span class="btn-label">送出預約</span>
+            </button>
+            <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 5. 空間設備 ===================== -->
+    <section class="section section--white" id="facilities" aria-labelledby="facilities-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Facilities</span>
+          <h2 class="section-title" id="facilities-title">空間設備</h2>
+          <p class="section-lead">有提供、沒提供的都寫清楚，避免到現場才失望。</p>
+        </div>
+
+        <div class="facility-layout">
+          <ul class="facility-grid" id="facility-list"></ul>
+
+          <aside class="peak-card" aria-labelledby="peak-title">
+            <h3 id="peak-title">尖峰時段提醒</h3>
+            <p>平日各時段平均人數（示意數據）</p>
+            <div class="peak-chart" id="peak-chart" role="img" aria-label="平日 18:00 至 21:00 為尖峰，10:00 至 16:00 人最少"></div>
+            <div class="legend">
+              <span><i style="background:var(--accent)"></i>人少</span>
+              <span><i style="background:var(--ink-3)"></i>一般</span>
+              <span><i style="background:var(--warn)"></i>尖峰</span>
+            </div>
+            <p class="peak-tip">新手建議選 <strong>平日 10:00–16:00</strong>，器材不用排隊，教練也有更多時間指導。</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 6. 退費與合約 ===================== -->
+    <section class="section" id="refund" aria-labelledby="refund-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Refund &amp; Contract</span>
+          <h2 class="section-title" id="refund-title">退費與合約</h2>
+          <p class="section-lead">把最容易引起爭議的事先講清楚。合約書範本可在櫃檯索取，帶回家看完再決定。</p>
+        </div>
+
+        <div class="refund-grid">
+          <div class="accordion">
+            <details class="acc" open>
+              <summary>月繳方案</summary>
+              <div class="acc-body">
+                <ul>
+                  <li>無綁約，每月自動扣款。</li>
+                  <li>於下次扣款日 7 天前提出，即可停止續約，不收任何違約金。</li>
+                  <li>當月已扣款的費用不退，但可使用至該期結束。</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="acc">
+              <summary>年繳方案</summary>
+              <div class="acc-body">
+                <ul>
+                  <li>簽約後 7 天內為猶豫期：未使用即可全額退費（含入會費）。</li>
+                  <li>猶豫期後可隨時終止，退還未使用月份費用。</li>
+                  <li>已使用月份以「月繳原價」計算，並酌收手續費（上限為應退金額的 10%）。</li>
+                </ul>
+                <div class="example">
+                  <b>試算範例：年繳 NT$15,600，使用 3 個月後終止</b>
+                  已使用：3 × NT$1,488 = NT$4,464<br>
+                  應退：NT$15,600 − NT$4,464 = NT$11,136<br>
+                  手續費上限 10%：NT$1,113 → <strong>實退至少 NT$10,023</strong>
+                </div>
+              </div>
+            </details>
+
+            <details class="acc">
+              <summary>私教與團課堂卡</summary>
+              <div class="acc-body">
+                <ul>
+                  <li>未使用堂數可隨時申請退費，按購買時的單堂均價計算。</li>
+                  <li>手續費上限為退款金額的 10%。</li>
+                  <li>課程前 24 小時以上取消不扣堂；24 小時內取消或未到扣 1 堂。</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="acc">
+              <summary>終止與暫停規則</summary>
+              <div class="acc-body">
+                <ul>
+                  <li><strong>免手續費終止：</strong>搬遷離開臺中、懷孕、受傷或疾病經醫師證明不宜運動。</li>
+                  <li><strong>會籍暫停：</strong>年繳會員每年可申請 2 次，每次最多 30 天，到期日順延。</li>
+                  <li>退款於申請核准後 14 個工作天內，以原付款方式退回。</li>
+                  <li>場館若停業或搬遷超過 5 公里，會員可全額退還剩餘費用，不收手續費。</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+
+          <aside class="service-card" aria-labelledby="service-title">
+            <h3 id="service-title">客服窗口</h3>
+            <ul class="service-list">
+              <li><span>電話</span><a href="tel:+886423000000">04-2300-0000</a></li>
+              <li><span>LINE</span><a href="#" aria-label="LINE 官方帳號（示意連結）">@ironfield</a></li>
+              <li><span>Email</span><a href="mailto:service@ironfield.example">service@ironfield.example</a></li>
+              <li><span>櫃檯</span><span>營業時間內皆可現場辦理</span></li>
+            </ul>
+            <a class="btn btn--block" href="tel:+886423000000">撥打客服電話</a>
+            <p class="service-note">退費或合約問題於 2 個工作天內回覆。如對處理結果有疑慮，可向臺中市政府消費者服務中心申訴。</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== Footer ===================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year">2026</span> <span data-bind="gym.name"></span> IRONFIELD｜<span data-bind="gym.region"></span></p>
+      <p><a href="#refund">退費規則</a>・<a href="#top">回到頂端 ↑</a></p>
+    </div>
+  </footer>
+
+  <!-- 手機底部固定 CTA -->
+  <div class="mobile-cta" id="mobile-cta">
+    <a class="btn btn--ghost" href="#plans">看方案</a>
+    <a class="btn" href="#booking">預約免費體驗</a>
+  </div>
+
+  <script>
+    /* =========================================================
+       資料層：依六個資料結構定義（目前為示意資料）
+       日後串接後端時，只要把 API 回傳的資料換進來即可。
+       ========================================================= */
+
+    /** GymProfile：場館名稱、地區、定位、營業時間 */
+    const gymProfile = {
+      name: "鐵原健身",
+      region: "臺中市西區・近勤美綠園道",
+      positioning: "給新手與上班族的肌力訓練館",
+      claim: "不追求誇張的身材，而是讓你學會正確動作、練得安全、持續得下去。小班制與持證教練，從第一堂課就陪你建立習慣。",
+      hours: [
+        { label: "週一至週五", time: "07:00 – 23:00" },
+        { label: "週六、週日", time: "09:00 – 21:00" },
+        { label: "國定假日", time: "09:00 – 18:00" }
+      ]
+    };
+
+    /** Coach：姓名、證照、專長、適合對象 */
+    const coaches = [
+      {
+        name: "林子豪",
+        title: "總教練・8 年資歷",
+        certifications: ["NSCA-CSCS", "CPR+AED"],
+        specialties: ["肌力訓練", "槓鈴基礎動作", "運動傷害預防"],
+        suitable_for: "完全沒碰過重量訓練、想從深蹲硬舉學起的新手"
+      },
+      {
+        name: "陳怡安",
+        title: "女性訓練教練・6 年資歷",
+        certifications: ["ACE-CPT", "產前產後運動指導認證"],
+        specialties: ["產後恢復", "核心穩定", "體態雕塑"],
+        suitable_for: "產後媽媽、想在女性友善環境訓練的學員"
+      },
+      {
+        name: "王柏翰",
+        title: "功能性訓練教練・5 年資歷",
+        certifications: ["NASM-CES 矯正運動", "FMS Level 1"],
+        specialties: ["姿勢矯正", "久坐痠痛改善", "中高齡體能"],
+        suitable_for: "久坐上班族、肩頸腰背不適、50 歲以上族群"
+      }
+    ];
+
+    /** TrainingPlan：方案名稱、價格、期間、限制、退費規則 */
+    const trainingPlans = [
+      {
+        type: "團體課",
+        name: "團課 10 堂卡",
+        price: 3200, unit: "/ 10 堂",
+        period: "購買日起 3 個月內使用",
+        limits: "每班上限 12 人，需於 App 預約；含自由重訓區使用",
+        refund_rule: "未使用堂數按均價退費，手續費上限 10%"
+      },
+      {
+        type: "一對一",
+        name: "私人教練課",
+        price: 1500, unit: "/ 堂",
+        period: "10 堂起購，6 個月內使用",
+        limits: "每堂 60 分鐘，24 小時前可免費改期",
+        refund_rule: "未使用堂數按均價退費，手續費上限 10%"
+      },
+      {
+        type: "會籍",
+        name: "月費會員",
+        price: 1488, unit: "/ 月",
+        period: "按月自動續約，無綁約",
+        limits: "營業時間內不限次數使用自由重訓區",
+        refund_rule: "扣款日 7 天前申請即可停止，當月不退",
+        featured: false
+      },
+      {
+        type: "會籍",
+        name: "年費會員",
+        price: 15600, unit: "/ 年",
+        period: "12 個月，平均每月 NT$1,300",
+        limits: "含每年 2 次會籍暫停、每月 2 堂團課",
+        refund_rule: "7 天猶豫期全額退；之後退未使用月份",
+        featured: true
+      }
+    ];
+    /** 入會費（獨立欄位，避免藏在方案細節裡） */
+    const joiningFee = { price: 1000, note: "首次體驗後 7 天內入會免收；月費與年費會員皆適用，私教與團課堂卡不需入會費。" };
+
+    /** FacilityFeature：設備名稱、說明、是否提供 */
+    const facilityFeatures = [
+      { name: "自由重訓區", description: "6 座深蹲架、奧林匹克槓與包膠槓片，地墊防噪", is_available: true },
+      { name: "有氧區", description: "跑步機 8 台、飛輪 6 台、划船機 4 台", is_available: true },
+      { name: "女性友善區", description: "獨立隔間的小型訓練區，僅限女性會員使用，設有鏡面與啞鈴組", is_available: true, highlight: true },
+      { name: "更衣室與淋浴間", description: "男女分開，各 6 間淋浴，提供吹風機與洗沐用品", is_available: true },
+      { name: "置物櫃", description: "密碼鎖置物櫃，可放下後背包", is_available: true },
+      { name: "毛巾租借", description: "首次體驗免費，會員每次 NT$20", is_available: true },
+      { name: "游泳池／三溫暖", description: "本館未設置，如有需求建議另尋綜合型場館", is_available: false },
+      { name: "停車場", description: "無附設停車位，鄰近有公有停車場（步行 3 分鐘）", is_available: false }
+    ];
+
+    /** TrustEvidence：學員見證、照片來源、評論摘要 */
+    const trustEvidence = [
+      {
+        author: "Amy・32 歲・工程師",
+        testimonial: "以前在大型連鎖健身房被推銷到怕，這裡體驗完真的讓我直接回家，反而讓我願意回來報名。",
+        photo_source: "學員本人授權提供",
+        review_summary: "Google 評論・服務態度"
+      },
+      {
+        author: "陳先生・55 歲",
+        testimonial: "腰痛好幾年，柏翰教練從呼吸和核心開始教，三個月後搬東西不再怕閃到。",
+        photo_source: "學員本人授權提供",
+        review_summary: "Google 評論・教練專業"
+      },
+      {
+        author: "小芸・28 歲・產後 8 個月",
+        testimonial: "女性友善區讓我比較自在，怡安教練會依照我的恢復狀況調整，不會勉強。",
+        photo_source: "未提供照片，以文字見證呈現",
+        review_summary: "現場問卷・環境與隱私"
+      }
+    ];
+
+    /** 尖峰時段（示意數據，0–100） */
+    const peakData = [
+      { h: "07", v: 45 }, { h: "09", v: 30 }, { h: "11", v: 18 }, { h: "13", v: 22 },
+      { h: "15", v: 20 }, { h: "17", v: 55 }, { h: "19", v: 95 }, { h: "21", v: 70 }, { h: "23", v: 25 }
+    ];
+
+    /* =========================================================
+       渲染
+       ========================================================= */
+    const $ = (sel) => document.querySelector(sel);
+    const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+    const money = (n) => "NT$" + n.toLocaleString("zh-TW");
+
+    // GymProfile
+    document.querySelectorAll('[data-bind^="gym."]').forEach((el) => {
+      el.textContent = gymProfile[el.dataset.bind.split(".")[1]];
+    });
+    $("#hours-list").innerHTML = gymProfile.hours
+      .map((h) => `<dt>${esc(h.label)}</dt><dd>${esc(h.time)}</dd>`).join("");
+
+    // Coach
+    $("#coach-list").innerHTML = coaches.map((c) => `
+      <article class="coach-card">
+        <div class="coach-photo" aria-hidden="true">${esc(c.name.charAt(0))}</div>
+        <div class="coach-body">
+          <h3 class="coach-name">${esc(c.name)}<small>${esc(c.title)}</small></h3>
+          <div>
+            <p class="field-label">證照</p>
+            <ul class="tag-list">${c.certifications.map((x) => `<li class="tag tag--cert">${esc(x)}</li>`).join("")}</ul>
+          </div>
+          <div>
+            <p class="field-label">專長</p>
+            <ul class="tag-list">${c.specialties.map((x) => `<li class="tag">${esc(x)}</li>`).join("")}</ul>
+          </div>
+          <p class="coach-fit"><strong>適合：</strong>${esc(c.suitable_for)}</p>
+        </div>
+      </article>`).join("");
+
+    // TrustEvidence
+    $("#trust-list").innerHTML = trustEvidence.map((t) => `
+      <figure class="trust-card">
+        <blockquote><p>${esc(t.testimonial)}</p></blockquote>
+        <figcaption>
+          <span class="avatar" aria-hidden="true">${esc(t.author.charAt(0))}</span>
+          <span>${esc(t.author)}
+            <span class="trust-source">${esc(t.review_summary)}｜照片來源：${esc(t.photo_source)}</span>
+          </span>
+        </figcaption>
+      </figure>`).join("");
+
+    // TrainingPlan
+    $("#plan-list").innerHTML = trainingPlans.map((p) => `
+      <article class="plan-card${p.featured ? " plan-card--featured" : ""}">
+        ${p.featured ? '<span class="chip chip--accent plan-badge">最划算</span>' : ""}
+        <div>
+          <p class="plan-type">${esc(p.type)}</p>
+          <h3 class="plan-name">${esc(p.name)}</h3>
+        </div>
+        <p class="plan-price">${money(p.price)}<small>${esc(p.unit)}</small></p>
+        <dl class="plan-dl">
+          <div><dt>期間</dt><dd>${esc(p.period)}</dd></div>
+          <div><dt>限制</dt><dd>${esc(p.limits)}</dd></div>
+          <div><dt>退費規則</dt><dd>${esc(p.refund_rule)}</dd></div>
+        </dl>
+        <a class="btn ${p.featured ? "" : "btn--ghost"}" href="#booking">先免費體驗</a>
+      </article>`).join("");
+    $("#fee-bar").innerHTML = `<span>入會費<strong>${money(joiningFee.price)}</strong></span><p>${esc(joiningFee.note)}</p>`;
+
+    // FacilityFeature
+    $("#facility-list").innerHTML = facilityFeatures.map((f) => `
+      <li class="facility${f.is_available ? "" : " facility--no"}${f.highlight ? " facility--female" : ""}">
+        <div class="facility-head">
+          <h3>${esc(f.name)}</h3>
+          <span class="status ${f.is_available ? "status--yes" : "status--no"}">${f.is_available ? "✓ 有提供" : "✕ 未提供"}</span>
+        </div>
+        <p>${esc(f.description)}</p>
+      </li>`).join("");
+
+    // 尖峰圖
+    $("#peak-chart").innerHTML = peakData.map((d) => {
+      const cls = d.v >= 70 ? "is-peak" : d.v <= 25 ? "is-calm" : "";
+      return `<div class="peak-bar ${cls}" style="height:${d.v}%"><span>${d.h}</span></div>`;
+    }).join("");
+
+    // 體驗時段：產生未來 7 天的可預約時段
+    (function buildSlots() {
+      const select = $("#f-slot");
+      const week = ["日", "一", "二", "三", "四", "五", "六"];
+      const weekdaySlots = ["10:00", "14:00", "19:00"];
+      const weekendSlots = ["10:00", "15:00"];
+      const today = new Date();
+      for (let i = 1; i <= 7; i++) {
+        const d = new Date(today);
+        d.setDate(today.getDate() + i);
+        const isWeekend = d.getDay() === 0 || d.getDay() === 6;
+        const group = document.createElement("optgroup");
+        const mm = d.getMonth() + 1, dd = d.getDate();
+        group.label = `${mm}/${dd}（${week[d.getDay()]}）`;
+        (isWeekend ? weekendSlots : weekdaySlots).forEach((t) => {
+          const iso = `${d.getFullYear()}-${String(mm).padStart(2, "0")}-${String(dd).padStart(2, "0")} ${t}`;
+          const opt = new Option(`${mm}/${dd}（${week[d.getDay()]}）${t}${t === "19:00" ? "・尖峰" : ""}`, iso);
+          group.appendChild(opt);
+        });
+        select.appendChild(group);
+      }
+    })();
+
+    /* =========================================================
+       表單驗證與送出（TrialBooking）
+       ========================================================= */
+    (function bookingForm() {
+      const form = $("#booking");
+      const status = $("#form-status");
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const label = submitBtn.querySelector(".btn-label");
+
+      const rules = {
+        name: (v) => v.trim().length >= 2,
+        contact: (v) => /^09\d{8}$/.test(v.replace(/[-\s]/g, "")) || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()),
+        slot: (v) => v !== "",
+        goal: (v) => v !== "",
+        is_first: () => !!form.querySelector('input[name="is_first"]:checked'),
+        consent: () => $("#f-consent").checked
+      };
+
+      function fieldOf(key) {
+        if (key === "consent") return $("#f-consent").closest(".form-field");
+        return form.querySelector(`[name="${key}"]`).closest(".form-field");
+      }
+
+      function check(key) {
+        const input = form.querySelector(`[name="${key}"]`);
+        const ok = rules[key](input ? input.value : "");
+        const field = fieldOf(key);
+        field.classList.toggle("is-invalid", !ok);
+        field.classList.toggle("is-valid", ok && key !== "is_first" && key !== "consent");
+        field.querySelectorAll("input, select").forEach((el) => el.setAttribute("aria-invalid", String(!ok)));
+        return ok;
+      }
+
+      // 使用者離開欄位後才驗證，避免一開始就滿版紅字
+      ["name", "contact", "slot", "goal"].forEach((key) => {
+        const el = form.querySelector(`[name="${key}"]`);
+        el.addEventListener("blur", () => { if (el.value !== "") check(key); });
+        el.addEventListener("input", () => { if (fieldOf(key).classList.contains("is-invalid")) check(key); });
+        el.addEventListener("change", () => check(key));
+      });
+      form.querySelectorAll('input[name="is_first"]').forEach((r) => r.addEventListener("change", () => check("is_first")));
+      $("#f-consent").addEventListener("change", () => check("consent"));
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        status.className = "form-status";
+        const results = Object.keys(rules).map((k) => [k, check(k)]);
+        const firstBad = results.find(([, ok]) => !ok);
+        if (firstBad) {
+          status.className = "form-status is-error";
+          status.textContent = "有欄位尚未完成，請檢查標示紅色的地方。";
+          const target = firstBad[0] === "consent" ? $("#f-consent") : form.querySelector(`[name="${firstBad[0]}"]`);
+          target.focus();
+          return;
+        }
+
+        // 組成 TrialBooking 物件
+        const fd = new FormData(form);
+        const trialBooking = {
+          name: fd.get("name").trim(),
+          contact: fd.get("contact").trim(),
+          slot: fd.get("slot"),
+          goal: fd.get("goal"),
+          is_first: fd.get("is_first") === "true"
+        };
+
+        // 送出中狀態
+        submitBtn.disabled = true;
+        submitBtn.setAttribute("aria-busy", "true");
+        label.textContent = "送出中…";
+
+        // 原型：以 setTimeout 模擬 API；正式版改為 fetch('/api/trial-bookings', { method: 'POST', body: JSON.stringify(trialBooking) })
+        setTimeout(() => {
+          submitBtn.removeAttribute("aria-busy");
+          label.textContent = "已送出";
+          status.className = "form-status is-success";
+          status.innerHTML = `<strong>預約已送出！</strong>我們會在 24 小時內以「${esc(trialBooking.contact)}」與你確認 ${esc(trialBooking.slot)} 的體驗時段。
+            <pre>${esc(JSON.stringify({ TrialBooking: trialBooking }, null, 2))}</pre>`;
+          status.focus?.();
+        }, 900);
+      });
+    })();
+
+    /* 手機底部 CTA：捲到預約表單時自動隱藏，避免遮住送出按鈕 */
+    (function () {
+      const cta = $("#mobile-cta");
+      const form = $("#booking");
+      if (!("IntersectionObserver" in window)) return;
+      new IntersectionObserver(([entry]) => {
+        cta.classList.toggle("is-hidden", entry.isIntersecting);
+      }, { threshold: 0.15 }).observe(form);
+    })();
+
+    $("#year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
